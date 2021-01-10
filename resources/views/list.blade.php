@@ -9,14 +9,14 @@
     <title>マイ英単語</title>
 </head>
 <body>
-　　 <div id="app">
+ <div id="app">
 <div class="container">
 <h1 class="main-title">My Business English Word</h1>
 <label for="word">英単語</label>
 <input v-model="word">
 <label for="text">意味</label>
 <input v-model="text">
-<button type="button" @click="send()" class=" btn-primary">登録</button>
+<button type="button" @click="send()" class="btn-primary">登録</button>
 <button class="answer-button" @mouseover="displayShow" @mouseleave="hiddenShow">Answer</button>
 
 <table class="table">
@@ -63,6 +63,7 @@ new Vue({
         show: false,
     },
     methods: {
+      
         send(){
             const url = '/ajax/send';
             const params = {
@@ -83,6 +84,7 @@ new Vue({
             .then((res) => {
                 this.lists = res.data;
             });
+          
         },
         displayShow(){
                 this.show = true;

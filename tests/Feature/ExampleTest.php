@@ -3,10 +3,17 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithoutMiddleware; 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\TableList;
+
 
 class ExampleTest extends TestCase
 {
+
+    use WithoutMiddleware;
+    use DatabaseTransactions;
     /**
      * A basic test example.
      *
@@ -14,8 +21,19 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+       
+        $response = TableList::getWord();
+        $this->assertEquals('verifying',$response['word']);
+    
     }
+    public function testsecondTest(){
+       
+    
+        $this->get('/')
+        ->Click('登録')
+        ->assertSee('登録');
+
+       
+    }
+
 }

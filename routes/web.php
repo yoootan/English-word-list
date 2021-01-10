@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/list','ListController@index')->name('list');
+
+Route::get('/','ListController@index')->name('list');
 Route::post('/ajax/send','ListController@create');
 Route::get('/ajax/word','ListController@show');
